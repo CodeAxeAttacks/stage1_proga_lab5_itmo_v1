@@ -1,0 +1,54 @@
+[
+  {
+    "name": "LabWork 1",
+    "coordinates": {
+      "x": 1.0,
+      "y": 2.0
+    },
+    "minimalPoint": 10.0,
+    "difficulty": "NORMAL",
+    "discipline": {
+      "name": "Discipline 1",
+      "selfStudyHours": 5
+    }
+  },
+  {
+    "name": "LabWork 2",
+    "coordinates": {
+      "x": 3.0,
+      "y": 4.0
+    },
+    "minimalPoint": 8.0,
+    "difficulty": "IMPOSSIBLE",
+    "discipline": {
+      "name": "Discipline 2",
+      "selfStudyHours": 10
+    }
+  },
+  {
+    "name": "LabWork 3",
+    "coordinates": {
+      "x": 228.0,
+      "y": 1337.0
+    },
+    "minimalPoint": 0.0,
+    "difficulty": "TERRIBLE",
+    "discipline": {
+      "name": "Discipline 3",
+      "selfStudyHours": 100000
+    }
+  },
+  {
+    "name": "LabWork 2",
+    "coordinates": {
+      "x": 22.0,
+      "y": 15.0
+    },
+    "minimalPoint": 18.0,
+    "difficulty": "VERY_EASY",
+    "discipline": {
+      "name": "Discipline 14",
+      "selfStudyHours": 100
+    }
+  }
+]
