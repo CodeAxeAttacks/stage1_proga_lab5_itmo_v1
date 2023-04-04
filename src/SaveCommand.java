@@ -16,14 +16,15 @@ public class SaveCommand implements Command {
                 + "Else, if you want to change the current file reply: 0");
         JsonWriter writerT = new JsonWriter(collection, "testing.json");
         JsonWriter writerR = new JsonWriter(collection, "result.json");
-        String reply = reader.readLine();
-        if (reply.equals("0"))
+        String reply = reader.readLine().trim();
+        if (reply.equals("0")) {
             try {
                 writerT.writeToJson();
                 System.out.println("Collection saved to testing.json.");
             } catch (IOException e) {
                 System.out.println("Error saving collection to testing.json: " + e.getMessage());
             }
+        }
         else {
             try {
                 writerR.writeToJson();
