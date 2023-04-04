@@ -18,16 +18,18 @@ public class UpdateCommand implements Command {
                 System.out.print("ID: ");
                 String idStr = reader.readLine();
                 id = Long.parseLong(idStr);
-                break;
+                LabWork labWork = collection.getById(id);
+                if (labWork == null) {
+                    System.out.println("LabWork with ID " + id + " not found. Please try again.");
+                    continue;
+                } else {
+                    break;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input for ID. Please enter a number: ");
             }
         }
         LabWork labWork = collection.getById(id);
-        if (labWork == null) {
-            System.out.println("LabWork with ID " + id + " not found");
-            return;
-        }
         System.out.println("LabWork with ID " + id + ": " + labWork);
         System.out.print("Characteristic to update (name, coordinates, minimalPoint, difficulty, discipline): ");
         String characteristic = reader.readLine();
@@ -109,6 +111,7 @@ public class UpdateCommand implements Command {
                 }
 
                 labWork.setDifficulty(difficulty);
+                System.out.println("Difficulty of the lab work has been updated to " + difficulty + ".");
 
                 break;
             case "discipline":
