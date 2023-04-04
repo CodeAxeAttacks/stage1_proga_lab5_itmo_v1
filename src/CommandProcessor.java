@@ -21,6 +21,11 @@ public class CommandProcessor {
         commands.put("history", new HistoryCommand(history));
         commands.put("remove", new RemoveCommand(collection));
         commands.put("insert", new InsertCommand(collection));
+        commands.put("update", new UpdateCommand(collection));
+        commands.put("replace_if_greater", new ReplaceIfGreater(collection));
+        commands.put("filter_greater_than_minimal_point", new FilterGraterThanMinimalPoint(collection));
+        commands.put("execute_script", new ExecuteScriptCommand(collection));
+        commands.put("replace_if_lowe", new ReplaceIfLowe(collection));
     }
 
     public void executeCommand(String input) throws IOException {

@@ -14,4 +14,12 @@ public class Discipline {
     public int getSelfStudyHours() {
         return selfStudyHours;
     }
+
+    public void setName(String name1) {
+        this.name = name1;
+    }
+
+    public void setSelfStudyHours(int selfStudyHours) {
+        this.selfStudyHours = selfStudyHours;
+    }
 }

@@ -7,7 +7,6 @@ public class MinByMinimalPointCommand implements Command {
 
     @Override
     public void execute() {
-        // Find the LabWork object with the minimal minimalPoint value
         LabWork minLabWork = null;
         float minPoint = Integer.MAX_VALUE;
         for (LabWork labWork : collection.getAll()) {
@@ -17,7 +16,6 @@ public class MinByMinimalPointCommand implements Command {
             }
         }
 
-        // Print the LabWork object to standard output
         if (minLabWork != null) {
             System.out.println("LabWork with minimal minimalPoint:");
             System.out.println("ID: " + minLabWork.getId());

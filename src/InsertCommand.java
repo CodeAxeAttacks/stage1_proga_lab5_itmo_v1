@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class InsertCommand implements Command {
     private final LabWorkCollection collection;
-
     public InsertCommand(LabWorkCollection collection) {
         this.collection = collection;
     }
@@ -13,6 +12,7 @@ public class InsertCommand implements Command {
     @Override
     public void execute() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        java.util.Date date = new Date();
         System.out.println("Enter the LabWork data:");
 
         System.out.print("ID: ");
@@ -46,6 +46,7 @@ public class InsertCommand implements Command {
         labWork.setName(name);
         labWork.setCoordinates(coordinates);
         labWork.setMinimalPoint(minimalPoint);
+        labWork.setCreationDate(date);
         labWork.setDifficulty(difficulty);
         labWork.setDiscipline(discipline);
 

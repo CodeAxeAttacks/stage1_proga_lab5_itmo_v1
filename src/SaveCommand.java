@@ -12,7 +12,7 @@ public class SaveCommand implements Command {
         JsonWriter writer = new JsonWriter(collection, "result.json");
         try {
             writer.writeToJson();
-            System.out.println("Collection saved to file.");
+            System.out.println("Collection saved to result.json.");
         } catch (IOException e) {
             System.out.println("Error saving collection to result.json: " + e.getMessage());
         }

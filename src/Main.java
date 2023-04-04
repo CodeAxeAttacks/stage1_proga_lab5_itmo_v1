@@ -27,7 +27,6 @@ public class Main {
 
                 processor.executeCommand(input);
             }
-            // rest of the program
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
