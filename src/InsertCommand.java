@@ -17,27 +17,77 @@ public class InsertCommand implements Command {
 
         System.out.print("ID: ");
         String id = reader.readLine();
+        boolean checker = true;
+        while (checker) {
+            for (LabWork labWork : collection.getAll()) {
+                if (labWork.getId() == Long.parseLong(id)) {
+                    System.out.print("Invalid input. Element with this ID already exists, select another one: ");
+                    id = reader.readLine();
+                    checker = true;
+                }
+                else {
+                    checker = false;
+                }
+            }
+        }
 
         System.out.print("Name: ");
         String name = reader.readLine();
 
         System.out.print("Coordinates (x y): ");
-        String[] coordinatesInput = reader.readLine().split("\\s+");
-        Coordinates coordinates = new Coordinates((float) Double.parseDouble(coordinatesInput[0]), Double.parseDouble(coordinatesInput[1]));
+        Coordinates coordinates = null;
+        while (coordinates == null) {
+            try {
+                String[] coordinatesInput = reader.readLine().split("\\s+");
+                float x = Float.parseFloat(coordinatesInput[0]);
+                double y = Double.parseDouble(coordinatesInput[1]);
+                coordinates = new Coordinates(x, y);
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                System.out.print("Invalid input. Please enter two numbers separated by a space: ");
+            }
+        }
 
 
         System.out.print("Minimal Point: ");
-        float minimalPoint = Float.parseFloat(reader.readLine());
+        float minimalPoint = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                minimalPoint = Float.parseFloat(reader.readLine());
+                validInput = true;
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter a number: ");
+            }
+        }
+
 
         System.out.print("Difficulty (VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE): ");
-        String difficultyInput = reader.readLine().toUpperCase();
-        Difficulty difficulty = Difficulty.valueOf(difficultyInput);
+        Difficulty difficulty = null;
+        while (difficulty == null) {
+            try {
+                String difficultyInput = reader.readLine().trim().toUpperCase();
+                difficulty = Difficulty.valueOf(difficultyInput);
+            } catch (IllegalArgumentException e) {
+                System.out.print("Invalid input. Please enter a valid difficulty level: ");
+            }
+        }
+
 
         System.out.print("Discipline Name: ");
         String disciplineName = reader.readLine();
 
         System.out.print("Self Study Hours: ");
-        int selfStudyHours = Integer.parseInt(reader.readLine());
+        int selfStudyHours = 0;
+        boolean validInput1 = false;
+        while (!validInput1) {
+            try {
+                selfStudyHours = Integer.parseInt(reader.readLine());
+                validInput1 = true;
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter a number: ");
+            }
+        }
+
 
         Discipline discipline = new Discipline(disciplineName, selfStudyHours);
 

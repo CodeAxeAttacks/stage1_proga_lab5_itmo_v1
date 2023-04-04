@@ -12,9 +12,17 @@ public class UpdateCommand implements Command {
     @Override
     public void execute() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("ID: ");
-        String idStr = reader.readLine();
-        long id = Long.parseLong(idStr);
+        long id = 0;
+        while (true) {
+            try {
+                System.out.print("ID: ");
+                String idStr = reader.readLine();
+                id = Long.parseLong(idStr);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for ID. Please enter a number: ");
+            }
+        }
         LabWork labWork = collection.getById(id);
         if (labWork == null) {
             System.out.println("LabWork with ID " + id + " not found");
@@ -23,6 +31,12 @@ public class UpdateCommand implements Command {
         System.out.println("LabWork with ID " + id + ": " + labWork);
         System.out.print("Characteristic to update (name, coordinates, minimalPoint, difficulty, discipline): ");
         String characteristic = reader.readLine();
+
+        while (!characteristic.equals("name") && !characteristic.equals("coordinates") && !characteristic.equals("minimalPoint") && !characteristic.equals("difficulty") && !characteristic.equals("discipline")) {
+            System.out.print("Invalid input. Please enter one of the following characteristics: name, coordinates, minimalPoint, difficulty, discipline: ");
+            characteristic = reader.readLine();
+        }
+
         switch (characteristic) {
             case "name":
                 System.out.print("New name: ");
@@ -34,27 +48,68 @@ public class UpdateCommand implements Command {
                 String xStr = reader.readLine();
                 System.out.print("Enter new Y coordinate: ");
                 String yStr = reader.readLine();
-                try {
-                    double x = Double.parseDouble(xStr);
-                    double y = Double.parseDouble(yStr);
-                    Coordinates coordinates = new Coordinates((float) x, y);
-                    labWork.setCoordinates(coordinates);
-                    System.out.println("Coordinates of the lab work with ID " + id + " have been updated to (" + x + ", " + y + ").");
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input for coordinates.");
+
+                double x = 0;
+                double y = 0;
+                boolean validInput = false;
+
+                while (!validInput) {
+                    try {
+                        x = Double.parseDouble(xStr);
+                        y = Double.parseDouble(yStr);
+                        validInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.print("Invalid input. Please enter numbers for the coordinates.");
+                        System.out.print("Enter new X coordinate: ");
+                        xStr = reader.readLine();
+                        System.out.print("Enter new Y coordinate: ");
+                        yStr = reader.readLine();
+                    }
                 }
+
+                Coordinates coordinates = new Coordinates((float) x, y);
+                labWork.setCoordinates(coordinates);
+                System.out.println("Coordinates of the lab work with ID " + id + " have been updated to (" + x + ", " + y + ").");
+
                 break;
             case "minimalPoint":
                 System.out.print("New minimal point: ");
                 String minimalPointStr = reader.readLine();
-                float minimalPoint = Float.parseFloat(minimalPointStr);
+
+                float minimalPoint = 0;
+                boolean validInput1 = false;
+
+                while (!validInput1) {
+                    try {
+                        minimalPoint = Float.parseFloat(minimalPointStr);
+                        validInput1 = true;
+                    } catch (NumberFormatException e) {
+                        System.out.print("Invalid input. Please enter a number for the minimal point: ");
+                        minimalPointStr = reader.readLine();
+                    }
+                }
+
                 labWork.setMinimalPoint(minimalPoint);
+                System.out.println("Minimal point of the lab work has been updated to " + minimalPoint + ".");
+
                 break;
             case "difficulty":
                 System.out.print("New difficulty (VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE): ");
-                String difficultyStr = reader.readLine();
-                Difficulty difficulty = Difficulty.valueOf(difficultyStr);
+                String difficultyStr = reader.readLine().toUpperCase();
+                Difficulty difficulty;
+
+                while (true) {
+                    try {
+                        difficulty = Difficulty.valueOf(difficultyStr);
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.print("Invalid input. Please enter one of the following difficulties: VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE: ");
+                        difficultyStr = reader.readLine().toUpperCase();
+                    }
+                }
+
                 labWork.setDifficulty(difficulty);
+
                 break;
             case "discipline":
                 System.out.print("New discipline (name, selfStudyHours): ");
@@ -68,8 +123,20 @@ public class UpdateCommand implements Command {
                     case "selfStudyHours":
                         System.out.print("New self-study hours: ");
                         String selfStudyHoursStr = reader.readLine();
-                        int selfStudyHours = Integer.parseInt(selfStudyHoursStr);
+                        int selfStudyHours;
+
+                        while (true) {
+                            try {
+                                selfStudyHours = Integer.parseInt(selfStudyHoursStr);
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.print("Invalid input. Please enter a valid number: ");
+                                selfStudyHoursStr = reader.readLine();
+                            }
+                        }
+
                         labWork.getDiscipline().setSelfStudyHours(selfStudyHours);
+
                         break;
                     default:
                         System.out.println("Unknown discipline characteristic: " + discipline);
@@ -80,7 +147,6 @@ public class UpdateCommand implements Command {
                 System.out.println("Unknown characteristic: " + characteristic);
                 break;
         }
-        System.out.println("LabWork with ID " + id + " updated: " + labWork);
     }
 
     @Override

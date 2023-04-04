@@ -24,7 +24,7 @@ public class HelpCommand implements Command {
                 "min_by_minimal_point : output any object from the collection whose minimalPoint field value is minimal\n" +
                 "group_counting_by_name : group the elements of the collection by the value of the name field, display the number of elements in each group\n" +
                 "filter_greater_than_minimal_point minimalPoint : display elements whose minimalPoint field value is greater than the given one\n" +
-                "------------------------------------------------\n");
+                "------------------------------------------------");
     }
 
     @Override
