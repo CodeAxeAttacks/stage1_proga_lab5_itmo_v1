@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,7 +51,7 @@ public class CommandProcessor {
         collection.getReplaceIfLowe(this.replaceIfLowe);
     }
 
-    public void executeCommand(String input) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void executeCommand(String input) {
         String[] parts = input.split("\\s+");
         String commandName = parts[0];
 
@@ -66,10 +61,14 @@ public class CommandProcessor {
             System.out.println("Unknown command: " + commandName);
             return;
         }
-
-        command.execute();
+        try {
+            command.execute();
+        }catch (Exception e){
+            System.out.println("command.execute();");
+        }
         history.addCommand(command);
     }
+
 
 
 }
