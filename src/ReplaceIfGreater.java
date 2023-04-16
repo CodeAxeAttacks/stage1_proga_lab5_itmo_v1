@@ -5,9 +5,11 @@ import java.util.Date;
 
 public class ReplaceIfGreater implements Command {
     private final LabWorkCollection collection;
+    public  BufferedReader reader;
 
-    public ReplaceIfGreater(LabWorkCollection collection) {
+    public ReplaceIfGreater(LabWorkCollection collection, BufferedReader bufferedReader) {
         this.collection = collection;
+        this.reader = bufferedReader;
     }
 
     @Override
@@ -83,5 +85,8 @@ public class ReplaceIfGreater implements Command {
     @Override
     public String getDescription() {
         return "replace_if_greater";
+    }
+    public void changeReader(BufferedReader bufferedReader){
+        this.reader = bufferedReader;
     }
 }

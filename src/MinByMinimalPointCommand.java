@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+
 public class MinByMinimalPointCommand implements Command {
     private final LabWorkCollection collection;
 
@@ -34,4 +36,5 @@ public class MinByMinimalPointCommand implements Command {
     public String getDescription() {
         return "min_by_minimal_point";
     }
+
 }

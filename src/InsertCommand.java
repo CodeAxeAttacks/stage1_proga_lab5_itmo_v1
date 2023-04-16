@@ -5,13 +5,15 @@ import java.util.Date;
 
 public class InsertCommand implements Command {
     private final LabWorkCollection collection;
-    public InsertCommand(LabWorkCollection collection) {
+    public BufferedReader reader;
+    public InsertCommand(LabWorkCollection collection, BufferedReader reader) {
         this.collection = collection;
+        this.reader = reader;
     }
 
     @Override
     public void execute() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//         = new BufferedReader(new InputStreamReader(System.in));
         java.util.Date date = new Date();
         System.out.println("Enter the LabWork data:");
 
@@ -108,5 +110,9 @@ public class InsertCommand implements Command {
     @Override
     public String getDescription() {
         return "insert";
+    }
+
+    public void changeReader(BufferedReader bufferedReader){
+        this.reader = bufferedReader;
     }
 }

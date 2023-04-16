@@ -4,14 +4,15 @@ import java.io.InputStreamReader;
 
 public class UpdateCommand implements Command {
     private final LabWorkCollection collection;
+    public  BufferedReader reader;
 
-    public UpdateCommand(LabWorkCollection collection) {
+    public UpdateCommand(LabWorkCollection collection, BufferedReader bufferedReader) {
         this.collection = collection;
+        this.reader = bufferedReader;
     }
 
     @Override
     public void execute() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         long id = 0;
         while (true) {
             try {
@@ -155,5 +156,8 @@ public class UpdateCommand implements Command {
     @Override
     public String getDescription() {
         return "update";
+    }
+    public void changeReader(BufferedReader bufferedReader){
+        this.reader = bufferedReader;
     }
 }

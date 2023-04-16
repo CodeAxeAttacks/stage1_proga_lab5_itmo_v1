@@ -5,14 +5,15 @@ import java.util.Collection;
 
 public class FilterGraterThanMinimalPoint implements Command {
     private final LabWorkCollection collection;
+    public  BufferedReader reader;
 
-    public FilterGraterThanMinimalPoint(LabWorkCollection collection) {
+    public FilterGraterThanMinimalPoint(LabWorkCollection collection, BufferedReader bufferedReader) {
         this.collection = collection;
+        this.reader = bufferedReader;
     }
 
     @Override
     public void execute() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("minimalPoint: ");
         float minimalPoint = Float.parseFloat(reader.readLine());
         Collection<LabWork> labWorks = collection.getAll();
@@ -33,5 +34,8 @@ public class FilterGraterThanMinimalPoint implements Command {
     @Override
     public String getDescription() {
         return "filter_greater_than_minimal_point";
+    }
+    public void changeReader(BufferedReader bufferedReader){
+        this.reader = bufferedReader;
     }
 }

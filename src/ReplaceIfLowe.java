@@ -5,14 +5,15 @@ import java.util.Date;
 
 public class ReplaceIfLowe implements Command {
     private final LabWorkCollection collection;
+    public  BufferedReader reader;
 
-    public ReplaceIfLowe(LabWorkCollection collection) {
+    public ReplaceIfLowe(LabWorkCollection collection, BufferedReader bufferedReader) {
         this.collection = collection;
+        this.reader = bufferedReader;
     }
 
     @Override
     public void execute() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         java.util.Date date = new Date();
         System.out.print("ID to compare: ");
         String idc = reader.readLine();
@@ -83,5 +84,8 @@ public class ReplaceIfLowe implements Command {
     @Override
     public String getDescription() {
         return "replace_if_greater";
+    }
+    public void changeReader(BufferedReader bufferedReader){
+        this.reader = bufferedReader;
     }
 }

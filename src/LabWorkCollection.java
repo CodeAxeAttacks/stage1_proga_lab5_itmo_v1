@@ -1,10 +1,16 @@
-import java.util.Hashtable;
-import java.util.Collection;
-import java.util.Date;
+import java.io.BufferedReader;
+import java.nio.Buffer;
+import java.util.*;
 
 public class LabWorkCollection {
-
+    public Map<String, Command> BufferOfCommandMap;
     private Hashtable<Long, LabWork> labWorks;
+    InsertCommand insertCommand;
+    UpdateCommand updateCommand;
+    ReplaceIfGreater replaceIfGreater;
+    FilterGraterThanMinimalPoint filterGraterThanMinimalPoint;
+    ExecuteScriptCommand executeScriptCommand;
+    ReplaceIfLowe replaceIfLowe;
 
     Date CDate = new Date();
     private long lastId = 0;
@@ -42,6 +48,40 @@ public class LabWorkCollection {
 
     public void clearAll() {
         labWorks.clear();
+    }
+
+    public Map<String, Command> sendCommandMap(){
+        return this.BufferOfCommandMap;
+    }
+    public void getMappingOfCommands(Map<String, Command> map) {
+        this.BufferOfCommandMap = map;
+    }
+    public void changeReaders(BufferedReader bufferedReader){
+        insertCommand.changeReader(bufferedReader);
+        updateCommand.changeReader(bufferedReader);
+        replaceIfGreater.changeReader(bufferedReader);
+        filterGraterThanMinimalPoint.changeReader(bufferedReader);
+        executeScriptCommand.changeReader(bufferedReader);
+        replaceIfLowe.changeReader(bufferedReader);
+
+    }
+    public void getInsetCommand(InsertCommand insertCommand){
+        this.insertCommand = insertCommand;
+    }
+    public void getUpdateCommand(UpdateCommand updateCommand){
+        this.updateCommand = updateCommand;
+    }
+    public void getReplaceIfGreater(ReplaceIfGreater replaceIfGreater){
+        this.replaceIfGreater = replaceIfGreater;
+    }
+    public void getFilterGraterThanMinimalPoint(FilterGraterThanMinimalPoint filterGraterThanMinimalPoint){
+        this.filterGraterThanMinimalPoint = filterGraterThanMinimalPoint;
+    }
+    public void getExecuteScriptCommand(ExecuteScriptCommand executeScriptCommand){
+        this.executeScriptCommand = executeScriptCommand;
+    }
+    public void getReplaceIfLowe(ReplaceIfLowe replaceIfLowe){
+        this.replaceIfLowe = replaceIfLowe;
     }
 
 }
