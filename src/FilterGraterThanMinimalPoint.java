@@ -12,6 +12,7 @@ public class FilterGraterThanMinimalPoint implements Command {
         this.reader = bufferedReader;
     }
 
+
     @Override
     public void execute() throws IOException {
         System.out.print("minimalPoint: ");
@@ -31,11 +32,12 @@ public class FilterGraterThanMinimalPoint implements Command {
         }
     }
 
+
     @Override
     public String getDescription() {
         return "filter_greater_than_minimal_point";
     }
-    public void changeReader(BufferedReader bufferedReader){
+    public void changeReader(BufferedReader bufferedReader) {
         this.reader = bufferedReader;
     }
 }

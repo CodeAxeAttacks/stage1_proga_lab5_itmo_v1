@@ -65,22 +65,22 @@ public class LabWorkCollection {
         replaceIfLowe.changeReader(bufferedReader);
 
     }
-    public void getInsetCommand(InsertCommand insertCommand){
+    public void getInsetCommand(InsertCommand insertCommand) {
         this.insertCommand = insertCommand;
     }
-    public void getUpdateCommand(UpdateCommand updateCommand){
+    public void getUpdateCommand(UpdateCommand updateCommand) {
         this.updateCommand = updateCommand;
     }
-    public void getReplaceIfGreater(ReplaceIfGreater replaceIfGreater){
+    public void getReplaceIfGreater(ReplaceIfGreater replaceIfGreater) {
         this.replaceIfGreater = replaceIfGreater;
     }
-    public void getFilterGraterThanMinimalPoint(FilterGraterThanMinimalPoint filterGraterThanMinimalPoint){
+    public void getFilterGraterThanMinimalPoint(FilterGraterThanMinimalPoint filterGraterThanMinimalPoint) {
         this.filterGraterThanMinimalPoint = filterGraterThanMinimalPoint;
     }
-    public void getExecuteScriptCommand(ExecuteScriptCommand executeScriptCommand){
+    public void getExecuteScriptCommand(ExecuteScriptCommand executeScriptCommand) {
         this.executeScriptCommand = executeScriptCommand;
     }
-    public void getReplaceIfLowe(ReplaceIfLowe replaceIfLowe){
+    public void getReplaceIfLowe(ReplaceIfLowe replaceIfLowe) {
         this.replaceIfLowe = replaceIfLowe;
     }
 

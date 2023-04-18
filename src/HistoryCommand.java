@@ -10,7 +10,7 @@ public class HistoryCommand implements Command {
     @Override
     public void execute() {
         List<Command> commands = history.getLastCommands();
-        int startIdx = Math.max(0, commands.size() - 11); // get the last 11 commands or less if there are fewer than 11
+        int startIdx = Math.max(0, commands.size() - 11);
         for (int i = startIdx; i < commands.size(); i++) {
             Command command = commands.get(i);
             System.out.println(command.getDescription());

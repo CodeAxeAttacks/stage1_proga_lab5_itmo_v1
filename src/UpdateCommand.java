@@ -157,7 +157,7 @@ public class UpdateCommand implements Command {
     public String getDescription() {
         return "update";
     }
-    public void changeReader(BufferedReader bufferedReader){
+    public void changeReader(BufferedReader bufferedReader) {
         this.reader = bufferedReader;
     }
 }

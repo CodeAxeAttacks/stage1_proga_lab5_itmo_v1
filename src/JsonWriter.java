@@ -15,7 +15,7 @@ public class JsonWriter {
     public void writeToJson() throws IOException {
         Gson gson = new Gson();
         String json = gson.toJson(collection.getAll());
-        FileWriter fileWriter = new FileWriter("result.json");
+        FileWriter fileWriter = new FileWriter("testing.json");
         fileWriter.write(json);
         fileWriter.close();
     }

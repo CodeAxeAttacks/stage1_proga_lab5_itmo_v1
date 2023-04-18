@@ -20,55 +20,47 @@ public class ExecuteScriptCommand implements Command {
     }
 
 
-
     @Override
     public void execute() {
         String fileName = null;
         try {
             System.out.print("fileName: ");
             fileName = rd.readLine();
-        }catch (Exception e){
-            System.out.println("fff");
+        } catch (Exception e) {
+            System.out.println("Exeption!");
         }
         stackWithFiles.push(fileName);
         try {
             assert fileName != null;
-            try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+            try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
                 File file = new File(fileName);
                 while (!file.exists()) {
                     System.out.println("File not found. Please enter a valid file name:");
                     fileName = rd.readLine();
                     file = new File(fileName);
                 }
-
-
                 stackWithReaders.push(reader);
                 collection.changeReaders(reader);
                 String input;
                 while ((input = reader.readLine()) != null) {
-                    count ++;
-                    if (input.charAt(0) == '/') {
-                        System.out.println(input.substring(1));
-                    } else {
-                        if (input.equals("execute_script") && !checkRecursion(input, fileName)) {
-                            throw new Exception("Обнаружена рекурсия! Уберите");
-                        }
-                        Map<String, Command> processor = collection.sendCommandMap();
-                        String[] parts = input.split("\\s+");
-                        String commandName = parts[0];
-                        Command command = processor.get(commandName);
-                        command.execute();
+                    if (input.equals("execute_script") && !checkRecursion(input, fileName)) {
+                        throw new Exception("Exeption! Check the data!");
                     }
+                    Map<String, Command> processor = collection.sendCommandMap();
+                    String[] parts = input.split("\\s+");
+                    String commandName = parts[0];
+                    Command command = processor.get(commandName);
+                    command.execute();
                 }
 
             }
         } catch (Exception e) {
-            System.out.println("Ошибка с рекурсией или что-то по типу такого, хз");
-        }finally {
+            System.out.println("Exeption!");
+        } finally {
             stackWithReaders.pop();
             try {
                 collection.changeReaders(stackWithReaders.peek());
-            }catch (EmptyStackException e){
+            } catch (EmptyStackException e) {
                 collection.changeReaders(new BufferedReader(new InputStreamReader(System.in)));
             }
         }
@@ -79,7 +71,7 @@ public class ExecuteScriptCommand implements Command {
     public String getDescription() {
         return "execute_script";
     }
-    public void changeReader(BufferedReader bufferedReader){
+    public void changeReader(BufferedReader bufferedReader) {
         this.rd = bufferedReader;
     }
     public boolean checkRecursion(String currentCommand, String fileName) {
@@ -91,14 +83,12 @@ public class ExecuteScriptCommand implements Command {
         try {
             if (Objects.equals(currentCommand, "execute_script") && stackWithFiles.contains(fileName)) {
                 return false;
-
             } else if (Objects.equals(currentCommand, "execute_script") && !stackWithFiles.contains(fileName)) {
                 Path path = Paths.get(currentCommand);
                 stackWithFiles.push(currentCommand);
-                //chosenScanner = new Scanner(path);
             }
         } catch (Exception e) {
-            System.out.println("Ты ошибка!");
+            System.out.println("Exeption!");
         }
         return true;
     }

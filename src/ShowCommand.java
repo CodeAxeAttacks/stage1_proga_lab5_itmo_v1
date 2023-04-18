@@ -8,7 +8,6 @@ public class ShowCommand implements Command {
     @Override
     public void execute() {
         if (collection.getSize() != 0) {
-            // Display all the LabWork objects in the collection
             for (LabWork labWork : collection.getAll()) {
                 System.out.println("ID: " + labWork.getId());
                 System.out.println("Name: " + labWork.getName());

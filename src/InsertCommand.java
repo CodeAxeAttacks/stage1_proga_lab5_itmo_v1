@@ -11,12 +11,11 @@ public class InsertCommand implements Command {
         this.reader = reader;
     }
 
+
     @Override
     public void execute() throws IOException {
-//         = new BufferedReader(new InputStreamReader(System.in));
         java.util.Date date = new Date();
         System.out.println("Enter the LabWork data:");
-
         System.out.print("ID: ");
         String id = reader.readLine();
         boolean checker = true;
@@ -49,7 +48,6 @@ public class InsertCommand implements Command {
             }
         }
 
-
         System.out.print("Minimal Point: ");
         float minimalPoint = 0;
         boolean validInput = false;
@@ -62,7 +60,6 @@ public class InsertCommand implements Command {
             }
         }
 
-
         System.out.print("Difficulty (VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE): ");
         Difficulty difficulty = null;
         while (difficulty == null) {
@@ -73,7 +70,6 @@ public class InsertCommand implements Command {
                 System.out.print("Invalid input. Please enter a valid difficulty level: ");
             }
         }
-
 
         System.out.print("Discipline Name: ");
         String disciplineName = reader.readLine();
@@ -89,7 +85,6 @@ public class InsertCommand implements Command {
                 System.out.print("Invalid input. Please enter a number: ");
             }
         }
-
 
         Discipline discipline = new Discipline(disciplineName, selfStudyHours);
 
@@ -112,7 +107,7 @@ public class InsertCommand implements Command {
         return "insert";
     }
 
-    public void changeReader(BufferedReader bufferedReader){
+    public void changeReader(BufferedReader bufferedReader) {
         this.reader = bufferedReader;
     }
 }

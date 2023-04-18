@@ -13,6 +13,7 @@ public class CommandProcessor {
     private ExecuteScriptCommand executeScriptCommand;
     private ReplaceIfLowe replaceIfLowe;
 
+
     public CommandProcessor(LabWorkCollection collection, InsertCommand insertCommand, UpdateCommand updateCommand,
                             ReplaceIfGreater replaceIfGreater, MinByMinimalPointCommand minByMinimalPointCommand,
                             FilterGraterThanMinimalPoint filterGraterThanMinimalPoint, ExecuteScriptCommand executeScriptCommand,
@@ -51,11 +52,10 @@ public class CommandProcessor {
         collection.getReplaceIfLowe(this.replaceIfLowe);
     }
 
+
     public void executeCommand(String input) {
         String[] parts = input.split("\\s+");
         String commandName = parts[0];
-
-
         Command command = commands.get(commandName);
         if (command == null) {
             System.out.println("Unknown command: " + commandName);
@@ -68,7 +68,4 @@ public class CommandProcessor {
         }
         history.addCommand(command);
     }
-
-
-
 }
