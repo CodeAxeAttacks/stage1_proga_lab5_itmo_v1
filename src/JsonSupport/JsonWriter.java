@@ -1,3 +1,6 @@
+package JsonSupport;
+
+import Support.LabWorkCollection;
 import com.google.gson.Gson;
 
 import java.io.FileWriter;

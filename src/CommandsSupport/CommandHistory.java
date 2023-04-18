@@ -1,3 +1,7 @@
+package CommandsSupport;
+
+import CommandsSupport.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 

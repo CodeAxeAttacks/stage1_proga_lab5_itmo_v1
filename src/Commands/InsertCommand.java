@@ -1,7 +1,12 @@
+package Commands;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class InsertCommand implements Command {
     private final LabWorkCollection collection;
@@ -15,7 +20,7 @@ public class InsertCommand implements Command {
     @Override
     public void execute() throws IOException {
         java.util.Date date = new Date();
-        System.out.println("Enter the LabWork data:");
+        System.out.println("Enter the Support.LabWork data:");
         System.out.print("ID: ");
         String id = reader.readLine();
         boolean checker = true;
@@ -35,7 +40,7 @@ public class InsertCommand implements Command {
         System.out.print("Name: ");
         String name = reader.readLine();
 
-        System.out.print("Coordinates (x y): ");
+        System.out.print("Support.Coordinates (x y): ");
         Coordinates coordinates = null;
         while (coordinates == null) {
             try {
@@ -60,7 +65,7 @@ public class InsertCommand implements Command {
             }
         }
 
-        System.out.print("Difficulty (VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE): ");
+        System.out.print("Support.Difficulty (VERY_EASY, NORMAL, IMPOSSIBLE, INSANE, TERRIBLE): ");
         Difficulty difficulty = null;
         while (difficulty == null) {
             try {
@@ -71,7 +76,7 @@ public class InsertCommand implements Command {
             }
         }
 
-        System.out.print("Discipline Name: ");
+        System.out.print("Support.Discipline Name: ");
         String disciplineName = reader.readLine();
 
         System.out.print("Self Study Hours: ");
@@ -99,7 +104,7 @@ public class InsertCommand implements Command {
 
         collection.add(labWork);
 
-        System.out.println("New LabWork added successfully.");
+        System.out.println("New Support.LabWork added successfully.");
     }
 
     @Override

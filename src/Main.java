@@ -1,7 +1,10 @@
+import Commands.*;
+import CommandsSupport.CommandProcessor;
+import JsonSupport.Parser;
+import Support.LabWorkCollection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -21,7 +24,7 @@ public class Main {
                     new MinByMinimalPointCommand(labWorkCollection),new FilterGraterThanMinimalPoint(labWorkCollection, new BufferedReader(new InputStreamReader(System.in))),new ExecuteScriptCommand(labWorkCollection, new BufferedReader(new InputStreamReader(System.in))),
                     new ReplaceIfLowe(labWorkCollection, new BufferedReader(new InputStreamReader(System.in))));
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Welcome to the LabWorkCollection program!\n" + "To check the list of commands type: help");
+            System.out.println("Welcome to the Support.LabWorkCollection program!\n" + "To check the list of commands type: help");
             while (true) {
                 System.out.print("> ");
                 String input = scanner.nextLine().trim();

@@ -1,7 +1,12 @@
+package Commands;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collection;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class FilterGraterThanMinimalPoint implements Command {
     private final LabWorkCollection collection;
@@ -22,11 +27,11 @@ public class FilterGraterThanMinimalPoint implements Command {
             if (labWork.getMinimalPoint() > minimalPoint) {
                 System.out.println("ID: " + labWork.getId());
                 System.out.println("Name: " + labWork.getName());
-                System.out.println("Coordinates: (" + labWork.getCoordinates().getX() + ", " + labWork.getCoordinates().getY() + ")");
+                System.out.println("Support.Coordinates: (" + labWork.getCoordinates().getX() + ", " + labWork.getCoordinates().getY() + ")");
                 System.out.println("Creation Date: " + labWork.getCreationDate());
                 System.out.println("Minimal Point: " + labWork.getMinimalPoint());
-                System.out.println("Difficulty: " + labWork.getDifficulty());
-                System.out.println("Discipline: " + labWork.getDiscipline().getName() + " (self-study hours: " + labWork.getDiscipline().getSelfStudyHours() + ")");
+                System.out.println("Support.Difficulty: " + labWork.getDifficulty());
+                System.out.println("Support.Discipline: " + labWork.getDiscipline().getName() + " (self-study hours: " + labWork.getDiscipline().getSelfStudyHours() + ")");
                 System.out.println("------------------------");
             }
         }

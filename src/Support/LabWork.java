@@ -1,3 +1,5 @@
+package Support;
+
 public class LabWork {
     private long id;
     private String name;

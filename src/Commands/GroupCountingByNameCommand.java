@@ -1,5 +1,10 @@
+package Commands;
+
 import java.util.Map;
 import java.util.stream.Collectors;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class GroupCountingByNameCommand implements Command {
     private final LabWorkCollection collection;

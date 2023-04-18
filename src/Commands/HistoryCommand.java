@@ -1,4 +1,9 @@
+package Commands;
+
 import java.util.List;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class HistoryCommand implements Command {
     private final CommandHistory history;

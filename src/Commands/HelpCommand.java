@@ -1,3 +1,8 @@
+package Commands;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
+
 public class HelpCommand implements Command {
     private final LabWorkCollection collection;
 

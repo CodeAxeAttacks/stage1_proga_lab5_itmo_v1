@@ -1,3 +1,5 @@
+package Support;
+
 public class Coordinates {
     private float x;
     private Double y;

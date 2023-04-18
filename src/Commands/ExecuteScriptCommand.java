@@ -1,3 +1,5 @@
+package Commands;
+
 import java.io.*;
 import java.lang.reflect.Executable;
 import java.lang.reflect.InvocationTargetException;
@@ -5,6 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.lang.reflect.Method;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class ExecuteScriptCommand implements Command {
     private final LabWorkCollection collection;

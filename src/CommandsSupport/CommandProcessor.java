@@ -1,3 +1,8 @@
+package CommandsSupport;
+
+import Commands.*;
+import Support.*;
+import JsonSupport.*;
 import java.util.HashMap;
 import java.util.Map;
 

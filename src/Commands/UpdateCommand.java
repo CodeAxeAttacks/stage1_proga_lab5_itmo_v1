@@ -1,6 +1,11 @@
+package Commands;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import CommandsSupport.*;
+import Support.*;
+import JsonSupport.*;
 
 public class UpdateCommand implements Command {
     private final LabWorkCollection collection;
@@ -21,7 +26,7 @@ public class UpdateCommand implements Command {
                 id = Long.parseLong(idStr);
                 LabWork labWork = collection.getById(id);
                 if (labWork == null) {
-                    System.out.println("LabWork with ID " + id + " not found. Please try again.");
+                    System.out.println("Support.LabWork with ID " + id + " not found. Please try again.");
                     continue;
                 } else {
                     break;
@@ -31,7 +36,7 @@ public class UpdateCommand implements Command {
             }
         }
         LabWork labWork = collection.getById(id);
-        System.out.println("LabWork with ID " + id + ": " + labWork);
+        System.out.println("Support.LabWork with ID " + id + ": " + labWork);
         System.out.print("Characteristic to update (name, coordinates, minimalPoint, difficulty, discipline): ");
         String characteristic = reader.readLine();
 
@@ -72,7 +77,7 @@ public class UpdateCommand implements Command {
 
                 Coordinates coordinates = new Coordinates((float) x, y);
                 labWork.setCoordinates(coordinates);
-                System.out.println("Coordinates of the lab work with ID " + id + " have been updated to (" + x + ", " + y + ").");
+                System.out.println("Support.Coordinates of the lab work with ID " + id + " have been updated to (" + x + ", " + y + ").");
 
                 break;
             case "minimalPoint":
@@ -112,7 +117,7 @@ public class UpdateCommand implements Command {
                 }
 
                 labWork.setDifficulty(difficulty);
-                System.out.println("Difficulty of the lab work has been updated to " + difficulty + ".");
+                System.out.println("Support.Difficulty of the lab work has been updated to " + difficulty + ".");
 
                 break;
             case "discipline":
